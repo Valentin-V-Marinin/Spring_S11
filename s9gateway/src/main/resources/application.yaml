@@ -1,0 +1,23 @@
+server:
+  port: 8080
+
+eureka:
+  instance:
+    hostname: localhost
+
+spring:
+  application:
+    name: S9gateway
+  cloud:
+    gateway:
+      routes:
+        - id: S9task
+          uri: http://localhost:8081/
+          predicates:
+            - Path=/api/tasks/**
+        - id: S9user
+          uri: http://localhost:8082/
+          predicates:
+            - Path=/api/users/**
+
+
